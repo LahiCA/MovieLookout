@@ -148,9 +148,17 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.4rem;  /* Better breathing room between title and year */
   background: rgba(255, 255, 255, 0.02);
 }
+/*.movie-info {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: rgba(255, 255, 255, 0.02);
+}*/
 
 
 .movie-title {
@@ -165,20 +173,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* Release Year Badge */
 .release-year {
-  font-size: 0.80rem;
+  font-size: 0.9rem;          /* Nice readable size */
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.15rem;
+  color: rgba(255, 255, 255, 0.7);  /* Softer white for secondary info */
+  margin: 0.4rem 0 0 0;        /* Small spacing, no extra bulk */
   letter-spacing: 0.5px;
-  align-self: flex-start;
-}
-
-/* Optional subtle hover effect */
-.movie-card:hover .release-year {
-  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Rating Select (if you add it back) */
@@ -236,10 +236,10 @@
     font-size: 1.1rem;
   }
 
-  .release_year {
-    font-size: 0.5rem;
+  .release-year {
+    font-size: 0.85rem;
   }
-
+ 
   .favourite-btn {
     width: 40px;
     height: 40px;
@@ -266,8 +266,8 @@
     font-size: 1rem;
   }
 
-  .release_year {
-    font-size: 0.80rem;
+  .release-year {
+    font-size: 0.8rem;
   }
 
   .favourite-btn {
