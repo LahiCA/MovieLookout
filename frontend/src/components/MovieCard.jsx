@@ -1,5 +1,6 @@
 import '../css/MovieCard.css'
 import { useMovieContext } from '../contexts/MovieContexts';
+import Rating from './Rating';
  
 function MovieCard({ movie }) {
   const { isFavourite, addToFavourites, removeFromFavourites } = useMovieContext();
@@ -30,6 +31,8 @@ function MovieCard({ movie }) {
     <div className="movie-info">
         <h3 className="movie-title">{movie.title}</h3>
         <span className="release-year">{year}</span>
+
+        <Rating movieId={movie.id}/>
     </div>
     </div>
   );
