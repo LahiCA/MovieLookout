@@ -1,0 +1,288 @@
+/* Favourites Page Container */
+.favourites {
+  padding: 3rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Page Title */
+.favourites h2 {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Optional: Add heart icons around the title */
+.favourites h2::before {
+  content: '❤️';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-200px);
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.favourites h2::after {
+  content: '❤️';
+  position: absolute;
+  right: 50%;
+  transform: translateX(200px);
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-200px) translateY(0);
+  }
+  50% {
+    transform: translateX(-200px) translateY(-10px);
+  }
+}
+
+/* Movies Grid for Favourites */
+.favourites .movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Empty State */
+.favourites-empty {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  margin: 4rem auto;
+  max-width: 600px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.favourites-empty::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 87, 108, 0.1) 0%, transparent 70%);
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.favourites-empty:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 87, 108, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(255, 87, 108, 0.2);
+}
+
+/* Empty State Icon */
+.favourites-empty::after {
+  content: '💔';
+  display: block;
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.4;
+  animation: heartbreak 2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes heartbreak {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+.favourites-empty h2 {
+  margin-bottom: 1rem;
+  margin-top: 0;
+  padding-top: 6rem; /* Space for the emoji */
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.favourites-empty p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+/* Staggered Animation for Favourite Movies */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.favourites .movies-grid > * {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger the animation delay for each card */
+.favourites .movies-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.favourites .movies-grid > *:nth-child(2) { animation-delay: 0.1s; }
+.favourites .movies-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.favourites .movies-grid > *:nth-child(4) { animation-delay: 0.2s; }
+.favourites .movies-grid > *:nth-child(5) { animation-delay: 0.25s; }
+.favourites .movies-grid > *:nth-child(6) { animation-delay: 0.3s; }
+.favourites .movies-grid > *:nth-child(7) { animation-delay: 0.35s; }
+.favourites .movies-grid > *:nth-child(8) { animation-delay: 0.4s; }
+.favourites .movies-grid > *:nth-child(9) { animation-delay: 0.45s; }
+.favourites .movies-grid > *:nth-child(10) { animation-delay: 0.5s; }
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+  .favourites {
+    padding: 2rem 1rem;
+  }
+
+  .favourites h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .favourites h2::before,
+  .favourites h2::after {
+    font-size: 1.5rem;
+  }
+
+  .favourites h2::before {
+    transform: translateX(-150px);
+  }
+
+  .favourites h2::after {
+    transform: translateX(150px);
+  }
+
+  .favourites .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .favourites-empty {
+    padding: 4rem 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .favourites-empty::after {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .favourites-empty h2 {
+    font-size: 1.8rem;
+    padding-top: 5rem;
+  }
+
+  .favourites-empty p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+  .favourites {
+    padding: 1.5rem 1rem;
+  }
+
+  .favourites h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .favourites h2::before,
+  .favourites h2::after {
+    display: none; /* Hide floating hearts on small screens */
+  }
+
+  .favourites .movies-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .favourites-empty {
+    padding: 3rem 1rem;
+    border-radius: 20px;
+  }
+
+  .favourites-empty::after {
+    font-size: 3.5rem;
+  }
+
+  .favourites-empty h2 {
+    font-size: 1.5rem;
+    padding-top: 4.5rem;
+  }
+
+  .favourites-empty p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Optional: Count badge showing number of favourites */
+.favourites-count {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
+  border: 2px solid rgba(245, 87, 108, 0.4);
+  color: #f5576c;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s ease-out 0.3s backwards;
+}
+
