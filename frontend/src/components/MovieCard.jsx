@@ -1,6 +1,7 @@
 import '../css/MovieCard.css'
 import { useMovieContext } from '../contexts/MovieContexts';
 import Rating from './Rating';
+import { useNavigate } from 'react-router-dom';
  
 function MovieCard({ movie }) {
   const { isFavourite, addToFavourites, removeFromFavourites } = useMovieContext();
@@ -14,6 +15,11 @@ function MovieCard({ movie }) {
 
     const posterUrl = movie?.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null;
     const year = movie?.release_date ? movie.release_date.split('-')[0] : '';
+
+    const navigate = useNavigate();
+    const goToDetails = () => {
+      navigate(`/movie/${movie.id}`);
+    };
 
   return (
     <div className="movie-card">
@@ -29,7 +35,8 @@ function MovieCard({ movie }) {
 
     </div>
     <div className="movie-info">
-        <h3 className="movie-title">{movie.title}</h3>
+        <h3 className="movie-title" onClick={goToDetails} >
+          {movie.title}</h3>
         <span className="release-year">{year}</span>
 
         <Rating movieId={movie.id}/>

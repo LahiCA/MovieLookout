@@ -173,6 +173,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.movie-title:hover {
+  color: #1e90ff;
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
 .release-year {
   font-size: 0.9rem;          /* Nice readable size */
   font-weight: 500;
